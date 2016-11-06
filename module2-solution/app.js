@@ -18,6 +18,7 @@ function ToBuyController(ShoppingListCheckOffService) {
 
   listToBuy.buyItem = function(index) {
     ShoppingListCheckOffService.buyItem(index);
+
   }
 
 }
@@ -71,7 +72,7 @@ function ShoppingListCheckOffService() {
 
   service.buyItem = function (index) {
 
-    alreadyBought.push(listOfItems.pop(index));
+    alreadyBought.push(listOfItems.splice(index,1)[0]);
 
   }
 

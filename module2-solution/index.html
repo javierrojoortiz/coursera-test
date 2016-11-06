@@ -15,12 +15,16 @@
       li {
         margin-bottom: 7px;
         font-size: 1.2em;
+        list-style-type: none;
       }
       li > button {
         margin-left: 6px;
       }
       button > span {
         color: green;
+      }
+      ul{
+        padding-left: 0px !important;
       }
     </style>
   </head>
@@ -34,23 +38,23 @@
     <div class="col-md-6" ng-controller="ToBuyController as listToBuy">
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in listToBuy.items">
+       <li class="alert alert-info" role="alert" ng-repeat="item in listToBuy.items">
         Buy {{ item.quantity }} {{ item.name }}
         <button class="btn btn-default" ng-click="listToBuy.buyItem($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
       </li>
      </ul>
-     <div class="emptyMessage" ng-if="listToBuy.isEmpty()">Everything is bought!</div>
+     <div role="alert" class="emptyMessage alert alert-danger" ng-if="listToBuy.isEmpty()">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
     <div class="col-md-6" ng-controller="AlreadyBoughtController as listBought">
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="item in listBought.items">
-         Bought {{ item.quantity }} {{ item.name }}
+       <li  class="alert alert-success" role="alert" ng-repeat="item in listBought.items"">
+         Bought {{ item.quantity }} {{ item.name }}.
        </li>
      </ul>
-     <div class="emptyMessage" ng-if="listBought.isEmpty()">Nothing bought yet.</div>
+     <div role="alert" class="emptyMessage alert alert-danger" ng-if="listBought.isEmpty()">Nothing bought yet.</div>
     </div>
   </div>
 </div>
