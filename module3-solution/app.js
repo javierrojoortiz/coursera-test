@@ -14,27 +14,29 @@ function MenuSearchService($http , ApiBasePath) {
   service.getMatchedMenuItems = function (searchTerm) {
     var foundItems = [];
     var items = [];
-
-    if(searchTerm == ''){
-      return foundItems;
-    }
-
+    
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (result) {
+
+      if(searchTerm == ''){
+        return foundItems;
+      }
+
       items = result.data.menu_items;
+
       for (var i = 0; i < items.length; i++) {
         var description = items[i].description;
+
         if (description.toLowerCase().indexOf(searchTerm) !== -1) {
           foundItems.push(items[i]);
-
         }
       }
       return foundItems;
-      }).catch(function (error) {
-        console.log("error getting all data");
-      });
+    }).catch(function (error) {
+      console.log("error getting all data");
+    });
 
   };
 }
