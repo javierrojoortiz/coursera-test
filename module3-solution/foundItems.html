@@ -1,0 +1,23 @@
+<div class="panel panel-primary list-items">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <h3 ng-show="found.length == 0">Search some items</h3>
+    <h3 ng-show="found.length > 0"> {{ "Found : " + found.length + " item(s)!" }} </h3>
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>Name</th>
+      <th>Short Name</th>
+      <th>Description</th>
+      <th>Remove Item</th>
+  </thead>
+  <tbody>
+  <tr ng-repeat="item in found">
+    <td> {{ item.name }} </td>
+    <td> -  {{ item.short_name }}  </td>
+    <td> {{item.description}} </td>
+    <td> <button class="btn pull-right btn-warning" ng-click="onRemove({index: $index});">Don't want this one!</button>   </td>
+  </tr>
+  </table>
+</div>
